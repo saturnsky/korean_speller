@@ -29,7 +29,7 @@ replace_re = re.compile(
     re.MULTILINE|re.DOTALL
     )
 
-splitter_re = re.compile("(\s+)", re.MULTILINE)
+splitter_re = re.compile(u"(\s+)", re.MULTILINE)
 
 def unescape(origin):
     return origin.replace("&amplt", "<").replace("&ampgt", ">").replace("&amp", "&")
@@ -57,9 +57,8 @@ def speller(origin, encoding="utf-8"):
     if not isinstance(encoding, basestring):
         raise TypeError("encoding must be a string, not " + repr(encoding))
 
-    if isinstance(origin, str): # 문자 인코딩을 utf-8로 맞춘다.
+    if isinstance(origin, str): # 문자를 unicode로 변환한다.
         origin = origin.decode(encoding)
-    origin = origin.encode("utf-8")
 
     splitted_origin = splitter_re.split(origin)
 
@@ -68,9 +67,9 @@ def speller(origin, encoding="utf-8"):
     start_pos = 0 # 텍스트의 누적 시작위치. LCS등을 사용하지 않아도 되도록 트리키하게 접근.
 
     for idx in xrange(0, len(splitted_origin), 600):
-        target = str.join("", splitted_origin[idx:idx+600])
+        target = unicode.join(u"", splitted_origin[idx:idx+600])
 
-        params = {'text1': target}
+        params = {'text1': target.encode("utf-8")}
         r = requests.post("http://speller.cs.pusan.ac.kr/PnuSpellerISAPI_201209/lib/PnuSpellerISAPI_201209.dll?Check"
                         , data=params)
 
