@@ -36,3 +36,6 @@ nosetests.xml
 
 # virtualenv
 .venv
+
+# jetbrains pycharm
+.idea
