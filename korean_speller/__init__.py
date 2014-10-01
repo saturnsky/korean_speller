@@ -70,8 +70,8 @@ def speller(origin, encoding="utf-8"):
         target = unicode.join(u"", splitted_origin[idx:idx+600])
 
         params = {'text1': target.encode("utf-8")}
-        r = requests.post("http://speller.cs.pusan.ac.kr/PnuSpellerISAPI_201209/lib/PnuSpellerISAPI_201209.dll?Check"
-                        , data=params)
+        r = requests.post("http://speller.cs.pusan.ac.kr/PnuSpellerISAPI_201209/lib/PnuSpellerISAPI_201209.dll?Check",
+                          data=params)
 
         raw_result = r.content.decode('utf-8')
         raw_correction_datas = correction_table_re.search(raw_result)
