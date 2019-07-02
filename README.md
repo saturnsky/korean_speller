@@ -10,4 +10,5 @@ korean_speller
 cmd나 파워셸에서 클론받은 디렉터리에 들어가 아래 명령을 실행합니다.
 
 > python setup.py install
+
 > pip install KoreanSpeller
