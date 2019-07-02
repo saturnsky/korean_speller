@@ -9,12 +9,12 @@ except ImportError:
 
 
 def read_me():
-    with codecs.open(os.path.join(os.path.dirname(__file__), 'README.md')) as f:
+    with codecs.open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding="utf-8") as f:
         return f.read()
 
 
 def get_version():
-    with codecs.open(os.path.join(os.path.dirname(__file__), 'VERSION')) as f:
+    with codecs.open(os.path.join(os.path.dirname(__file__), 'VERSION'), encoding="utf-8") as f:
         return f.read()
 
 setup(
